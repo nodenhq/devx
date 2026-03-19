@@ -3,17 +3,30 @@ set -euo pipefail
 
 HELP() {
     cat <<EOF
-Sync Utility
+publish-addon.sh — Sync selected files from a private repo to a public read-only repo.
 
-This script is designed for private repositories that publish to a
-public read-only repository.
+USAGE
+  ./publish-addon.sh URL [BRANCH]
+  ./publish-addon.sh help
 
-How to use:
+ARGUMENTS
+  URL     Remote repository URL.
+            Token-based : https://TOKEN@github.com/user/repo.git
+            SSH         : git@github.com:user/repo.git
+  BRANCH  Target branch to push to. Defaults to 'master'.
+          Can also be set via the BRANCH environment variable.
 
-1) Create 'publish.txt' and list the files or directories to publish (one per line).
-2) Run: ./publish.sh URL [BRANCH]
-  - Arg 1: https://gitlab:TOKEN@github.com/user/repo.git or git@github.com:user/repo.git
-  - Arg 2: Target branch (e.g., master or dev)
+SETUP
+  Create a file named 'publish.txt' in the current directory listing the files
+  or directories to sync, one per line. Lines starting with '#' are ignored.
+
+EXAMPLE
+  export BRANCH=dev
+  ./publish-addon.sh git@github.com:org/public-repo.git
+
+OUTPUT
+  Creates or updates the target branch with the listed files, using the latest
+  local commit message. Prints the published items on success.
 EOF
 }
 
