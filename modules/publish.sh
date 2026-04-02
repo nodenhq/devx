@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Noden | DevX Suite
+# modules/publish.sh — Addon Publisher to Public Repo
 set -euo pipefail
 
 HELP() {

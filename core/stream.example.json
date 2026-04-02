@@ -1,0 +1,41 @@
+{
+  "backup_dir": "/tmp/odoo-backups",
+  "instances": [
+    {
+      "name": "prod",
+      "pg_host": "127.0.0.1",
+      "pg_port": "5432",
+      "pg_exec": "local",
+      "pg_user": "odoo",
+      "pg_pass": "odoo",
+      "filestore_base": "/home/odoo/.local/share/Odoo/filestore",
+      "databases": ["mydb", "mydb2"]
+    },
+    {
+      "name": "staging",
+      "pg_host": "127.0.0.1",
+      "pg_port": "5432",
+      "pg_exec": "docker",
+      "docker_container": "odoo-db",
+      "pg_user": "odoo",
+      "pg_pass": "odoo",
+      "filestore_base": "/var/lib/odoo/filestore",
+      "databases": ["staging_db"]
+    }
+  ],
+  "storage": {
+    "local": {
+      "enabled": true,
+      "path": "/opt/backups/odoo",
+      "max_backups": 5
+    },
+    "s3": {
+      "enabled": false,
+      "endpoint": "s3.amazonaws.com",
+      "bucket": "s3://my-bucket/odoo/",
+      "access_key": "",
+      "secret_key": "",
+      "max_backups": 5
+    }
+  }
+}
