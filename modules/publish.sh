@@ -142,7 +142,7 @@ cmd_sync() {
                 log "  $item -> target"
                 cp -r "$item" "$WORK_DIR/"
                 items+=("$item")
-                (( count++ ))
+                (( count++ )) || true
             else
                 warn "  $item — not found, skipping"
             fi
