@@ -253,8 +253,9 @@ restore_database() {
         return 1
     fi
 
-    # 3. Restore SQL
+    # 3. Restore SQL (rewrite ownership to target pg_user)
     log psql "${instance}/${db}"
+    sed -i "s/OWNER TO [^;]*;/OWNER TO ${pg_user};/g" "${sql_file}"
     if ! run_psql "${pg_exec}" "${container}" "${pg_host}" "${pg_port}" \
             "${pg_user}" "${pg_pass}" "${db}" "${sql_file}"; then
         rm -rf "${work_dir}"
