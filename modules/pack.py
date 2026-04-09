@@ -44,7 +44,7 @@ def packaging(name, *extra):
 
     depends = [name] + [p for p in data.get("depends", []) if os.path.exists(p)]
 
-    build = int(datetime.now(timezone.utc).timestamp())
+    build = datetime.now(timezone.utc).strftime("%Y%m%d")
     zip_name = f"{name}-{version}+{build}.zip"
 
     with zipfile.ZipFile(zip_name, "w", compression=zipfile.ZIP_DEFLATED) as zf:
