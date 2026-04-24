@@ -1,0 +1,47 @@
+services:
+  odoo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ODOO_VERSION: ${ODOO_VERSION:-19.0}
+    image: noden-odoo-migration:${ODOO_VERSION:-19.0}
+    container_name: noden-odoo-migration-${ODOO_VERSION:-19.0}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    ports:
+      - "${ODOO_PORT:-8069}:8069"
+      - "${ODOO_LONGPOLLING_PORT:-8072}:8072"
+    volumes:
+      - noden-odoo-migration-data:/var/lib/odoo
+      - ./out:/mnt/extra-addons
+    networks:
+      - noden-migration-net
+
+  db:
+    image: postgres:${POSTGRES_VERSION:-16}
+    container_name: noden-odoo-migration-db-${ODOO_VERSION:-19.0}
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - noden-odoo-migration-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-odoo}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - noden-migration-net
+
+networks:
+  noden-migration-net:
+    driver: bridge
+
+volumes:
+  noden-odoo-migration-data:
+  noden-odoo-migration-db-data:
