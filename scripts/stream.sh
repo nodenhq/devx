@@ -1,6 +1,6 @@
 #! /bin/bash
-# Noden | DevX Suite
-# core/stream.sh — Local DB & Filestore Backup/Restore Stream
+# noden | Odoo DevX
+# scripts/stream.sh — Local DB & Filestore Backup/Restore Stream
 
 set -uo pipefail
 

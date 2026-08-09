@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# Noden | DevX Suite
-# modules/pack.py — Odoo Addon Packager
+# noden | Odoo DevX
+# scripts/pack.py — Odoo Addon Packager
 
 import ast
 import os

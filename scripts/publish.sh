@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Noden | DevX Suite
-# modules/publish.sh — Publish to read-only repos or mirror between repos
+# noden | Odoo DevX
+# scripts/publish.sh — Publish to read-only repos or mirror between repos
 set -euo pipefail
 
 # --- Colors & logging ---

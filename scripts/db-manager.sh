@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Noden | DevX Suite
-# core/db-manager.sh — Odoo DB Backup & Restore via Web API
+# noden | Odoo DevX
+# scripts/db-manager.sh — Odoo DB Backup & Restore via Web API
 set -euo pipefail
 
 CMD="${1:-}"
