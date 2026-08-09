@@ -1,0 +1,8 @@
+.env
+migrations
+migrations/logs
+migrations/backups
+migrations/addons
+migrations/openupgrade
+migrations/data
+stream.json
