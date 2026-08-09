@@ -21,6 +21,7 @@ Directory Structure
 |   |-- stream.sh                 # Local DB + filestore backup/restore (pg_dump)
 |   |-- pack.py                   # Clean addon packaging utility
 |   |-- publish.sh                # Addon publishing automation
+|   |-- copy-addons.sh            # Copy modules across repos at the same branch
 |-- module-migration/             # Workspace for module code migrations
 |-- migrations/                   # Workspace for OpenUpgrade DB migrations
 ```
